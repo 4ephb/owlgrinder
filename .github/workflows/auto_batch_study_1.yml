@@ -1,4 +1,4 @@
-name: 1. 200 lesson 1
+name: 1. 500 lesson 1
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
       - run: node index.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
-          LESSONS: 200
+          LESSONS: 500
   keepalive:
     name: Keepalive Workflow
     runs-on: ubuntu-latest
