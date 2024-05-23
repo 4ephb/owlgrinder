@@ -1,10 +1,10 @@
-name: 03. N lesson 3
+name: 04. N lessons x 20 xp
 
 on:
   workflow_dispatch:
     inputs:
       lessons:
-        default: 500
+        default: 250
         description: 'Number of lessons to be completed'
         required: false
         type: number
@@ -19,15 +19,7 @@ jobs:
         with:
           node-version: 20
 
-      - run: node index-1.js
+      - run: node index-20.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
           LESSONS: ${{ inputs.lessons }}
-  keepalive:
-    name: Keepalive Workflow
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: gautamkrishnar/keepalive-workflow@v2

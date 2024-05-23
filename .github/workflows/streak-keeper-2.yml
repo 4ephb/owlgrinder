@@ -1,20 +1,20 @@
-name: Keep my streak 2
+name: Keep streak 1x20 - 6D
 
 on:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 6 * * *'
 
 jobs:
   study:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
-      - run: node index-1.js
+      - run: node index-20.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
           LESSONS: 1

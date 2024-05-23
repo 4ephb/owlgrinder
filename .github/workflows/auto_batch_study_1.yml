@@ -1,4 +1,4 @@
-name: 1. 500 lesson 1
+name: 01. 500 lessons x 10 xp - 1D
 
 on:
   workflow_dispatch:
@@ -15,15 +15,7 @@ jobs:
         with:
           node-version: 20
 
-      - run: node index-1.js
+      - run: node index-10.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
           LESSONS: 500
-  keepalive:
-    name: Keepalive Workflow
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: gautamkrishnar/keepalive-workflow@v2

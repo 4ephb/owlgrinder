@@ -1,4 +1,4 @@
-name: 04. N lesson 4
+name: 03. N lessons x 10 xp
 
 on:
   workflow_dispatch:
@@ -13,21 +13,13 @@ jobs:
   study:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
-      - run: node index-1.js
+      - run: node index-10.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
           LESSONS: ${{ inputs.lessons }}
-  keepalive:
-    name: Keepalive Workflow
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    steps:
-      - uses: actions/checkout@v3
-      - uses: gautamkrishnar/keepalive-workflow@v2

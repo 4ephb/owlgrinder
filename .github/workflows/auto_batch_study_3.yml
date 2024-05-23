@@ -1,9 +1,9 @@
-name: 3. 500 lesson 3
+name: 02. 250 lessons x 20 xp - 1D
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 1 * * *'
 
 jobs:
   study:
@@ -15,15 +15,7 @@ jobs:
         with:
           node-version: 20
 
-      - run: node index-1.js
+      - run: node index-20.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
-          LESSONS: 500
-  keepalive:
-    name: Keepalive Workflow
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: gautamkrishnar/keepalive-workflow@v2
+          LESSONS: 250
