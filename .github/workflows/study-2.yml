@@ -1,0 +1,33 @@
+name: 02. N lesson 2
+
+on:
+  workflow_dispatch:
+    inputs:
+      lessons:
+        default: 200
+        description: 'Number of lessons to be completed'
+        required: false
+        type: number
+
+jobs:
+  study:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - run: node index.js
+        env:
+          DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
+          LESSONS: ${{ inputs.lessons }}
+  keepalive:
+    name: Keepalive Workflow
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: gautamkrishnar/keepalive-workflow@v2
