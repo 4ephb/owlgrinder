@@ -2,7 +2,7 @@ name: Keep my Duolingo streak
 
 on:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 0/1 * * *'
 
 jobs:
   study:
@@ -17,7 +17,7 @@ jobs:
       - run: node index.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
-          LESSONS: 1
+          LESSONS: 175
   keepalive:
     name: Keepalive Workflow
     runs-on: ubuntu-latest
