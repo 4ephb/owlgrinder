@@ -10,29 +10,10 @@ try {
 
 	const { sub } = JSON.parse(
 		Buffer.from(process.env.DUOLINGO_JWT.split(".")[1], "base64").toString(),
-	)
-	
-	const getArgValue = (arg, defaultValue) => {
-		return arg !== undefined ? parseInt(arg, 10) : defaultValue;
-	};
+	);
 
-	const [,, lessonsArg, minIntervalArg, maxIntervalArg] = process.argv;
-
-	const lessons = getArgValue(lessonsArg, 10); // Default value is 10
-	const minInterval = getArgValue(minIntervalArg, 10); // Default value is 10 seconds
-	const maxInterval = getArgValue(maxIntervalArg, 20); // Default value is 20 seconds
-
-	console.log('lesson: %d, minInt: %d, maxInt: %d', lessons, minInterval, maxInterval);
-
-	if (isNaN(lessons) || isNaN(minInterval) || isNaN(maxInterval)) {
-		console.error('Please provide valid numbers for lessons, minInterval, and maxInterval.');
-		process.exit(1);
-	}
-
-	const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-	const { fromLanguage, learningLanguage, xpGains } = await fetch(
-		`https://www.duolingo.com/2017-06-30/users/${sub}?fields=fromLanguage,learningLanguage,xpGains`,
+	const { fromLanguage, learningLanguage } = await fetch(
+		`https://www.duolingo.com/2017-06-30/users/${sub}?fields=fromLanguage,learningLanguage`,
 		{
 			headers,
 		},
@@ -119,9 +100,8 @@ try {
 						isV2: true,
 						juicy: true,
 						learningLanguage,
-						skillId: xpGains.find(xpGain => xpGain.skillId).skillId, 
 						smartTipsVersion: 2,
-						type: "SPEAKING_PRACTICE",
+						type: "GLOBAL_PRACTICE",
 					}),
 					headers,
 					method: "POST",
@@ -148,11 +128,6 @@ try {
 
 			xp += response.xpGain;
 			lessonCount += 1;
-
-			const interval = Math.random() * (maxInterval - minInterval) + minInterval;
-			const intervalInMs = interval * 1000;
-			console.log(`{XP: ${response.xpGain}}, Waiting for ${interval.toFixed(2)} seconds before next lesson...`);
-			await sleep(intervalInMs);
 
 		} catch (error) {
             console.log("❌ Something went wrong");
