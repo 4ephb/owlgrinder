@@ -1,8 +1,8 @@
-name: Keep streak 88x20 - 6H
+name: Keep streak 100x20 - 1H
 
 on:
   schedule:
-    - cron: '0 0/1 * * *'
+    - cron: '0 0/1 * * *' # each hour
 
 jobs:
   study:
@@ -17,4 +17,4 @@ jobs:
       - run: node index-20.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
-          LESSONS: 88
+          LESSONS: 100
