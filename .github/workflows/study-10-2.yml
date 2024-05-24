@@ -1,10 +1,10 @@
-name: 001. N lessons x 10 xp
+name: 002. N lessons x 10 xp
 
 on:
   workflow_dispatch:
     inputs:
       lessons:
-        default: 500
+        default: 750
         description: 'Number of lessons to be completed'
         required: false
         type: number

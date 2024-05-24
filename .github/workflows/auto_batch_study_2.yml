@@ -1,13 +1,9 @@
-name: 001. N lessons x 10 xp
+name: 02. 250 lessons x 20 xp - 1D
 
 on:
   workflow_dispatch:
-    inputs:
-      lessons:
-        default: 500
-        description: 'Number of lessons to be completed'
-        required: false
-        type: number
+  schedule:
+    - cron: '0 1 * * *'
 
 jobs:
   study:
@@ -19,7 +15,7 @@ jobs:
         with:
           node-version: 20
 
-      - run: node index-10.js
+      - run: node index-20.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
-          LESSONS: ${{ inputs.lessons }}
+          LESSONS: 250

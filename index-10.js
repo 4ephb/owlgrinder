@@ -114,7 +114,7 @@ try {
 					body: JSON.stringify({
 						...session,
 						heartsLeft: 0,
-						startTime: (+new Date() - 60000) / 1000,
+						startTime: (+new Date() - 6000) / 1000,
 						enableBonusPoints: false,
 						endTime: +new Date() / 1000,
 						failed: false,

@@ -1,4 +1,4 @@
-name: 001. N lessons x 10 xp
+name: 004. N lessons x 20 xp
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 20
 
-      - run: node index-10.js
+      - run: node index-20.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
           LESSONS: ${{ inputs.lessons }}

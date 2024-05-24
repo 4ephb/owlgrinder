@@ -1,4 +1,4 @@
-name: 04. N lessons x 20 xp
+name: 003. N lessons x 20 xp
 
 on:
   workflow_dispatch:
